@@ -3,7 +3,7 @@ import Player from '/assets/js/GameEnginev1/essentials/Player.js';
 import Npc from '/assets/js/GameEnginev1/essentials/Npc.js';
 import Barrier from '/assets/js/GameEnginev1/essentials/Barrier.js';
 
-class oceanAsset {
+class OceanCollision {
     constructor(gameEnv) {
 
         const path = gameEnv.path;
@@ -45,7 +45,7 @@ class oceanAsset {
             keypress: { up: 87, left: 65, down: 83, right: 68 }
         };
 
-        // ---------- GOLD NPC ----------
+        // ---------- NPC ----------
         const npcData1 = {
             id: 'goldfish',
             greeting: 'glub glub',
@@ -63,32 +63,7 @@ class oceanAsset {
             hitbox: {
                 widthPercentage: 0.2,
                 heightPercentage: 0.2
-            },
-
-            dialogues: ['glub glub']
-        };
-
-        // ---------- SHARK NPC ----------
-        const npcData2 = {
-            id: 'sharknpc',
-            greeting: "I'm gonna bite you",
-            src: path + "/images/gamify/water/shark.png",
-
-            SCALE_FACTOR: 5,
-            ANIMATION_RATE: 60,
-
-            INIT_POSITION: { x: 700, y: 250 },
-
-            pixels: { height: 225, width: 225 },
-
-            orientation: { rows: 1, columns: 1 },
-
-            hitbox: {
-                widthPercentage: 0.25,
-                heightPercentage: 0.25
-            },
-
-            dialogues: ["I'm gonna bite you"]
+            }
         };
 
         // ---------- REEF COLLISION ----------
@@ -111,15 +86,13 @@ class oceanAsset {
             }
         };
 
-        // ---------- GAME OBJECTS ----------
         this.classes = [
             { class: GameEnvBackground, data: bgData },
             { class: Player, data: playerData },
             { class: Npc, data: npcData1 },
-            { class: Npc, data: npcData2 },
             { class: Barrier, data: barrierData }
         ];
     }
 }
 
-export default oceanAsset;
+export default OceanCollision;

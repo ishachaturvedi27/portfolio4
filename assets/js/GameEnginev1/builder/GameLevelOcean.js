@@ -104,4 +104,4 @@ class Ocean {
     }
 }
 
-export default ocean;
+export default Ocean;
