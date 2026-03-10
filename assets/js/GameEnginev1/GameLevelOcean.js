@@ -15,10 +15,10 @@ class Ocean {
             pixels: { height: 772, width: 1134 }
         };
 
-        // ---------- PLAYER (School Fish) ----------
+        // ---------- (PLAYER  octopus) ----------
         const playerData = {
             id: 'playerData',
-            src: path + "/images/gamify/bg/school-fish.png",
+            src: path + "/images/gamify/water/octopus.png",
 
         SCALE_FACTOR: 4,
            STEP_FACTOR: 1000,
