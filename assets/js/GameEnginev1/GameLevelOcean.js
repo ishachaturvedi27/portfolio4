@@ -20,10 +20,10 @@ class Ocean {
             id: 'playerData',
             src: path + "/images/gamify/bg/school-fish.png",
 
-        SCALE_FACTOR: 8,
+        SCALE_FACTOR: 4,
            STEP_FACTOR: 1000,
            ANIMATION_RATE: 30,
-           INIT_POSITION: { x: 350, y: 400 },
+           INIT_POSITION: { x: 300, y: 300 },
            pixels: { height: 256, width: 256 },
            orientation: { rows: 4, columns: 4 },
            down: { row: 0, start: 0, columns: 4 },
