@@ -130,19 +130,24 @@ class Player extends Character {
         }
     }
 
+    handleCollisionReaction(other) {
+        // Allow movement in all directions after collision
+        this.velocity.x = 0;
+        this.velocity.y = 0;
+        this.updateDirection();
+    }
+
     update() {
         super.update();
-        if(!this.moved){
-            if (this.gravity) {
-                    this.time += 1;
-                    this.velocity.y += 0.5 + this.acceleration * this.time;
-                }
-            }
-        else{
-            this.time = 0;
+        // Ensure velocity updates are applied correctly for all directions
+        if (this.moved) {
+            this.time = 0; // Reset gravity timer when moving
+        } else if (this.gravity) {
+            this.time += 1;
+            this.velocity.y += 0.5 + this.acceleration * this.time; // Apply gravity only when not moving
         }
-        }
-        
+    }
+
     /**
      * Overrides the reaction to the collision to handle
      *  - clearing the pressed keys array

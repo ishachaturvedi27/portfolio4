@@ -198,30 +198,18 @@ class Character extends GameObject {
         // Calculate the frame dimensions
         const pixels = this.spriteData.pixels || { width: this.spriteSheet.naturalWidth, height: this.spriteSheet.naturalHeight };
         const orientation = this.spriteData.orientation || { rows: 1, columns: 1 };
-        const frameWidth = Math.max(1, Math.round(pixels.width / orientation.columns));
-        const frameHeight = Math.max(1, Math.round(pixels.height / orientation.rows));
 
-        // Calculate the frame position on the sprite sheet
-        const directionData = this.spriteData[this.direction] || {};
-        const frameX = ((directionData.start || 0) + (this.frameIndex || 0)) * frameWidth;
-        const frameY = (directionData.row || 0) * frameHeight;
-
-        // Set the canvas dimensions based on the frame size
-    // Set the canvas dimensions based on the frame size (integers)
-    this.canvas.width = frameWidth;
-    this.canvas.height = frameHeight;
-
-        // Apply transformations (rotation, mirroring, spinning)
-        this.applyTransformations(directionData);
-
-        // Apply visual effects (e.g., grayscale, blur)
-        this.applyFilters(directionData);
-
-        // Draw the sprite sheet frame
+        // Draw the entire sprite sheet (original behavior)
         this.ctx.drawImage(
             this.spriteSheet,
-            frameX, frameY, frameWidth, frameHeight, // Source rectangle
-            0, 0, this.canvas.width, this.canvas.height // Destination rectangle
+            0, // Source X
+            0, // Source Y
+            pixels.width, // Source Width
+            pixels.height, // Source Height
+            this.position.x, // Destination X
+            this.position.y, // Destination Y
+            pixels.width * this.scaleFactor, // Destination Width
+            pixels.height * this.scaleFactor // Destination Height
         );
     }
 
